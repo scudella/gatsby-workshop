@@ -1,23 +1,23 @@
 /*eslint no-template-curly-in-string:0*/
 module.exports = {
   siteMetadata: {
-    title: `SketchXConf 2020`,
-    description: `description`,
-    author: `@you`,
-    siteUrl: `https://monica.dev/gatsbyworkshop`,
+    title: `JavaScript Conf 2021`,
+    description: `Next JS Conf`,
+    author: `@scudella`,
+    siteUrl: `https://susegana2.ddns.net/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-custom-tailwind`,
-        short_name: `gct`,
+        name: `jv-custom`,
+        short_name: `jvc`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#000`,
         display: `minimal-ui`,
-        icon: `src/images/pencil-icon.png`,
+        icon: `src/images/icons.png`,
       },
     },
     `gatsby-plugin-postcss`,
