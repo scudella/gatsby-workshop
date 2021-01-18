@@ -1,7 +1,19 @@
 import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
 import { Link } from "gatsby";
 
 export default function footer() {
+  const data = useStaticQuery(graphql`
+    query HeaderQuery {
+      site {
+        siteMetadata {
+          title
+          author
+        }
+      }
+    }
+  `);
+
   return (
     <div>
       <div className="bg-white ">
@@ -11,10 +23,10 @@ export default function footer() {
               to="/"
               className="no-underline text-gray-700 hover:text-gray-500"
             >
-              &copy; SketchXConf 2020
+              &copy; {data.site.siteMetadata.title}
             </Link>
           </p>
-
+          <p>Author: {data.site.siteMetadata.author}</p>
           <p>
             <a
               href="https://monica.dev/gatsbyworkshop"
