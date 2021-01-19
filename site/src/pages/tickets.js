@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-const Ticket = ({ title = "placeholder conference" }) => (
+const Ticket = ({ title }) => (
   <div className="text-center ">
     <h1 className="text-5xl font-extrabold text-blue-500 leading-9 tracking-tight">
       Grab Your Ticket To {title}
@@ -25,10 +25,20 @@ const Ticket = ({ title = "placeholder conference" }) => (
 );
 
 function TicketsPage() {
+  const data = useStaticQuery(graphql`
+    query TicketsQuery {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `);
+
   return (
     <Layout>
       <SEO title="Tickets" keywords={[`Tickets`]} />
-      <Ticket />
+      <Ticket title={data.site.siteMetadata.title} />
     </Layout>
   );
 }
