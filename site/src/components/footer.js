@@ -4,7 +4,7 @@ import { Link } from "gatsby";
 
 export default function footer() {
   const data = useStaticQuery(graphql`
-    query HeaderQuery {
+    query FooterQuery {
       site {
         siteMetadata {
           title
