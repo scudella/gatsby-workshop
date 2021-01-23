@@ -28,6 +28,13 @@ module.exports = {
         purgeOnly: [`src/css/style.css`],
       },
     },
+    `gatsby-transformer-yaml`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./src/data`,
+      },
+    },
     `gatsby-plugin-offline`,
   ],
 };
