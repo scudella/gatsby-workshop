@@ -1,10 +1,11 @@
 import React from "react";
-
+import { useStaticQuery } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import sketchnoting from "../images/taking-notes.svg";
+import TalkCard from "../components/talkCard";
 
-const Hero = () => (
+const Hero = ({ talks }) => (
   <div className="text-center">
     <h1 className="text-5xl font-extrabold text-blue-500 leading-9 tracking-tight font-inter">
       October 7th, 2020
@@ -27,14 +28,35 @@ const Hero = () => (
       </div>
     </div>
     <br />
-    <h2 className="text-5xl font-extrabold text-blue-500 leading-9 tracking-tight font-inter">
+    <h2
+      className="text-5xl font-extrabold text-blue-500 leading-9 tracking-tight font-inter p-4"
+      id="schedule"
+    >
       Schedule
     </h2>
-    Placeholder Text!
+    {talks.map((talk) => {
+      return <TalkCard talk={talk.node} key={talk.node.name} />;
+    })}
   </div>
 );
 
 function IndexPage() {
+  const data = useStaticQuery(graphql`
+    query FetchSpeakers {
+      allSpeakersYaml {
+        edges {
+          node {
+            id
+            avatar
+            name
+            title
+            time
+          }
+        }
+      }
+    }
+  `);
+
   return (
     <Layout>
       <SEO
@@ -42,7 +64,7 @@ function IndexPage() {
         keywords={[`gatsby`, `tailwind`, `react`, `tailwindcss`]}
       />
 
-      <Hero />
+      <Hero talks={data.allSpeakersYaml.edges} />
     </Layout>
   );
 }
