@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 
-export default function speakerCard({ speakers }) {
+export default function SpeakerCard({ speakers }) {
   return (
     <div className="flex items-center flex-wrap ">
       {speakers.map(({ node }) => (
